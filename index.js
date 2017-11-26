@@ -24,8 +24,7 @@ const server = new Hapi.Server();
 // });
 // Create a server with a host and port
 server.connection({
-    host: 'localhost',
-    port: 3000,
+    port: process.env.PORT || 8080,
     // for cross-origin
     routes: {
         cors: true
