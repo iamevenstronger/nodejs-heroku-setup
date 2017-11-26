@@ -53,6 +53,14 @@ server.register([
 
 // Add the route
 server.route([{
+    method: 'GET',
+    path: '/',
+    config: {
+        handler: function(req,res) {
+            res({server: 'Hapi'});
+        }
+    }
+}, {
     method: 'POST',
     path: '/demo/useradd',
     config: {
@@ -80,7 +88,7 @@ server.route([{
             }
         }
     }
-},{
+}, {
     method: 'GET',
     path: '/demo/getuser/{id}',
     config: {
@@ -93,7 +101,7 @@ server.route([{
             //     console.log(result);
             //     reply(result);
             // }); 
-            reply({data: "Its working"});
+            reply({ data: "Its working" });
         },
         description: 'Get user data',
         notes: 'demo Get request',
@@ -101,7 +109,7 @@ server.route([{
         validate: {
             failAction: Relish.failAction,
             params: {
-                id :Joi.number().required()
+                id: Joi.number().required()
             }
         }
     }
