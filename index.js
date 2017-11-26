@@ -10,18 +10,18 @@ var mysql = require('mysql');
 const server = new Hapi.Server();
 
 // mysqk connection
-var con = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "",
-    database: "demo_user"
-});
+// var con = mysql.createConnection({
+//     host: "localhost",
+//     user: "root",
+//     password: "",
+//     database: "demo_user"
+// });
 
 // should connect sql from the start!
-con.connect(function (err) {
-    if (err) throw err;
-    console.log("Mysql Connected to demo_user!");
-});
+// con.connect(function (err) {
+//     if (err) throw err;
+//     console.log("Mysql Connected to demo_user!");
+// });
 // Create a server with a host and port
 server.connection({
     host: 'localhost',
@@ -58,14 +58,14 @@ server.route([{
     config: {
         handler: function (request, reply) {
             console.log(request.payload);
-            let username = request.payload.username;
-            let email = request.payload.email;
-            let age = request.payload.age;
-            var sql = "INSERT INTO userdata (id,username,email,age) VALUES ('','" + username + "','" + email + "','" + age + "')";
-            con.query(sql, function (err, result) {
-                if (err) throw err;
-                console.log("1 record inserted");
-            });
+            // let username = request.payload.username;
+            // let email = request.payload.email;
+            // let age = request.payload.age;
+            // var sql = "INSERT INTO userdata (id,username,email,age) VALUES ('','" + username + "','" + email + "','" + age + "')";
+            // con.query(sql, function (err, result) {
+            //     if (err) throw err;
+            //     console.log("1 record inserted");
+            // });
             reply({ success: true, message: "User data inserted!" });
         },
         description: 'Post user data',
@@ -86,13 +86,14 @@ server.route([{
     config: {
         handler: function (request, reply) {
             console.log(request.params);
-            let id = request.params.id;
-            var sql = "select * from userdata where id='"+id+"'";
-            con.query(sql, function (err, result) {
-                if (err) throw err;
-                console.log(result);
-                reply(result);
-            }); 
+            // let id = request.params.id;
+            // var sql = "select * from userdata where id='"+id+"'";
+            // con.query(sql, function (err, result) {
+            //     if (err) throw err;
+            //     console.log(result);
+            //     reply(result);
+            // }); 
+            reply({data: "Its working"});
         },
         description: 'Get user data',
         notes: 'demo Get request',
