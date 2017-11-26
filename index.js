@@ -79,7 +79,7 @@ server.route([{
         notes: 'demo post request',
         tags: ['api'],
         validate: {
-            failAction: Relish.failAction,
+            // failAction: Relish.failAction,
             payload: {
                 username: Joi.string().required(),
                 email: Joi.string().email().required(),
@@ -106,7 +106,7 @@ server.route([{
         notes: 'demo Get request',
         tags: ['api'],
         validate: {
-            failAction: Relish.failAction,
+            // failAction: Relish.failAction,
             params: {
                 id: Joi.number().required()
             }
